@@ -86,6 +86,7 @@
     <Compile Include="Code\Team.cs" />
     <Compile Include="Code\TeamGenerator.cs" />
     <Compile Include="Code\Tournament.cs" />
+    <Compile Include="Code\TournamentRound.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

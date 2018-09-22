@@ -27,26 +27,29 @@ namespace SlowballGenerator
             ExtensionMethods.Shuffle(players);
             Tournament tournament = new Tournament(rounds);
 
+
             for (int i = 0; i < rounds; i++)
             {
+                TournamentRound round = new TournamentRound("Round : " + (i+1).ToString());
                 int partnerRandomStart = ThreadSafeRandom.ThisThreadsRandom.Next(0, numPlayers - 1);
                 int partnerRandomIntervall = ThreadSafeRandom.ThisThreadsRandom.Next(1, numPlayers - 1);
                 List<Team> teams = TeamGenerator.GenerateTeams(partnerRandomStart, partnerRandomIntervall, players, nbrOfTeams);
-                tournament.Teams[i] = teams;
+                round.Teams = teams;
+                tournament.Rounds.Add(round);
             }
 
-            
-            ASPxListBox1.DataSource = tournament.Teams[0];
+
+            ASPxListBox1.DataSource = tournament.Rounds[0].Teams;
             ASPxListBox1.TextField = "Name";
             ASPxListBox1.DataBind();
 
-            ASPxListBox2.DataSource = tournament.Teams[1];
-            ASPxListBox2.TextField = "Name";
-            ASPxListBox2.DataBind();
+            //ASPxListBox2.DataSource = tournament.Teams[1];
+            //ASPxListBox2.TextField = "Name";
+            //ASPxListBox2.DataBind();
 
-            ASPxListBox3.DataSource = tournament.Teams[2];
-            ASPxListBox3.TextField = "Name";
-            ASPxListBox3.DataBind();
+            //ASPxListBox3.DataSource = tournament.Teams[2];
+            //ASPxListBox3.TextField = "Name";
+            //ASPxListBox3.DataBind();
         }
     }
 }
