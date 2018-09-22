@@ -1,0 +1,1 @@
+<%@ Application Codebehind="Global.asax.cs" Inherits="SlowballGenerator.Global_asax" Language="C#" %>
