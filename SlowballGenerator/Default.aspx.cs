@@ -24,32 +24,29 @@ namespace SlowballGenerator
                 };
                 players.Add(player);
             }
-            ExtensionMethods.Shuffle(players);
             Tournament tournament = new Tournament(rounds);
 
-
+            ExtensionMethods.Shuffle(players);
             for (int i = 0; i < rounds; i++)
             {
                 TournamentRound round = new TournamentRound("Round : " + (i+1).ToString());
-                int partnerRandomStart = ThreadSafeRandom.ThisThreadsRandom.Next(0, numPlayers - 1);
-                int partnerRandomIntervall = ThreadSafeRandom.ThisThreadsRandom.Next(1, numPlayers - 1);
-                List<Team> teams = TeamGenerator.GenerateTeams(partnerRandomStart, partnerRandomIntervall, players, nbrOfTeams);
+                List<Team> teams = TeamGenerator.GenerateTeams(players, nbrOfTeams);
                 round.Teams = teams;
+                round.Matches = MatchGenerator.GenerateMatches(teams, teams.Count / 2);
                 tournament.Rounds.Add(round);
             }
 
-
-            ASPxListBox1.DataSource = tournament.Rounds[0].Teams;
+            ASPxListBox1.DataSource = tournament.Rounds[0].Matches;
             ASPxListBox1.TextField = "Name";
             ASPxListBox1.DataBind();
 
-            //ASPxListBox2.DataSource = tournament.Teams[1];
-            //ASPxListBox2.TextField = "Name";
-            //ASPxListBox2.DataBind();
+            ASPxListBox2.DataSource = tournament.Rounds[1].Matches;
+            ASPxListBox2.TextField = "Name";
+            ASPxListBox2.DataBind();
 
-            //ASPxListBox3.DataSource = tournament.Teams[2];
-            //ASPxListBox3.TextField = "Name";
-            //ASPxListBox3.DataBind();
+            ASPxListBox3.DataSource = tournament.Rounds[2].Matches;
+            ASPxListBox3.TextField = "Name";
+            ASPxListBox3.DataBind();
         }
     }
 }

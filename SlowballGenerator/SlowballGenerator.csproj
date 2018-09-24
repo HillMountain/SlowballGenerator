@@ -82,6 +82,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Code\ExtensionMethods.cs" />
+    <Compile Include="Code\Match.cs" />
+    <Compile Include="Code\MatchGenerator.cs" />
     <Compile Include="Code\Player.cs" />
     <Compile Include="Code\Team.cs" />
     <Compile Include="Code\TeamGenerator.cs" />
